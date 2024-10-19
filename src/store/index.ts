@@ -1,10 +1,11 @@
-import { createStore } from 'redux';
 import todosReducer from './todosReducer';
-import { ITodo } from '@/interfaces/ITodo';
+import { configureStore } from '@reduxjs/toolkit';
 
-const todoStore = createStore(todosReducer);
+const todoStore = configureStore({
+    reducer: {
+        todos: todosReducer,
+    }
+});
 
-export type RootState = {
-    todos: ITodo[];
-};
+export type RootState = ReturnType<typeof todoStore.getState>;
 export default todoStore;
