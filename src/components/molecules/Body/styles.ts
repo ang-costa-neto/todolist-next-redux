@@ -5,5 +5,6 @@ export const ContentBody = styled.body`
     margin: 0;
     box-sizing: border-box
     display: flex;
-    justify-content: center
+    justify-content: center;
+    background-color: #EAE3D5;
 `;
