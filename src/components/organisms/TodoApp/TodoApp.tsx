@@ -1,9 +1,9 @@
 "use client";
-import TodoList from '../molecules/TodoList';
-import TodoForm from '../atoms/TodoForm';
+import TodoList from '../../molecules/TodoList';
+import TodoForm from '../../atoms/TodoForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { addTask, removeTask, toogleComplete } from '@/store/todosReducer';
+import { addTask, removeTask, toogleComplete } from '@/reducers/todosReducer';
 import { v4 as uuidV4 } from "uuid";
 
 const TodoApp = () => {
@@ -30,10 +30,10 @@ const TodoApp = () => {
     };
 
     return (
-        <div>
+        <>
             <TodoForm onAdd={handleAddTodo} />
             <TodoList todos={todos} onToggle={handleToggleTodo} onDelete={handleDeleteTodo} />
-        </div>
+        </>
     );
 };
 

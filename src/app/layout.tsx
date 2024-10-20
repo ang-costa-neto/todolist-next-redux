@@ -1,19 +1,19 @@
-import React from 'react';
+import { Body } from '@/components/molecules/Body/Body';
+import { Content } from '@/components/molecules/Content/Content';
+import { NavBar } from '@/components/organisms/NavBar/NavBar';
 import { TodoProvider } from '@/providers/TodoProvider';
+import React from 'react';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <TodoProvider>
-            <html lang="pt-BR">
-                <body>
-                    <header>
-                        <h1>Meu App de Tarefas</h1>
-                    </header>
-                    <main>{children}</main>
-                    <footer>
-                        <p>&copy; 2024 Meu App de Tarefas</p>
-                    </footer>
-                </body>
+            <html>
+                <Body>
+                    <NavBar />
+                    <Content>
+                        {children}
+                    </Content>
+                </Body>
             </html>
         </TodoProvider>
     );

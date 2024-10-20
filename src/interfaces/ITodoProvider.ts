@@ -1,3 +1,3 @@
 export interface ITodoProvider {
-    children: React.ReactElement
+    children: React.ReactNode
 }

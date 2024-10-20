@@ -1,4 +1,4 @@
-import TodoApp from '../components/organisms/TodoApp';
+import TodoApp from '../components/organisms/TodoApp/TodoApp';
 
 const Home = () => {
     return (
