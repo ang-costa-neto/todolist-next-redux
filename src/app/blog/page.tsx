@@ -1,8 +1,28 @@
+"use client";
 import { IPost } from "@/interfaces/IPost";
+import { useRequireAuth } from '@/hooks/useRequireAuth';
+import { useState, useEffect } from "react";
 
-export default async function Blog() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`);
-    const posts: IPost[] = await res.json();
+const Blog = () => {
+    const isAuthenticated = useRequireAuth();
+    const [posts, setPosts] = useState<IPost[]>([]);
+
+    useEffect(() => {
+        fetchPosts().then((data) => {
+            setPosts(data);
+        });
+    }, []);
+    
+    const fetchPosts = async () => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts`);
+        const posts: IPost[] = await res.json();
+        return posts;
+    };
+
+    if (!isAuthenticated) {
+        return <p>Redirecionando para a página de login...</p>;
+    }
+
 
     return (
         <div>
@@ -17,3 +37,5 @@ export default async function Blog() {
         </div>
     );
 }
+
+export default Blog;
